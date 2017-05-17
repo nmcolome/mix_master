@@ -7,7 +7,7 @@ RSpec.feature "User views all artist" do
 
     visit '/artists'
     expect(page).to have_content artist.name
-    # expect(page).to have_content artist1.name
+    expect(page).to have_content artist1.name
 
     click_on artist.name
     expect(current_path).to eq("/artists/#{artist.id}")

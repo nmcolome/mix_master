@@ -1,0 +1,8 @@
+<h1><%= @artist.name %>'s Song Index</h1>
+
+<%= link_to "New Song", new_artist_song_path(@artist.id) %>
+<ul>
+  <% @songs.each do |song| %>
+    <li><%= song.title %></li>
+  <% end %>
+</ul>
