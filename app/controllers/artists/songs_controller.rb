@@ -3,6 +3,7 @@ class Artists::SongsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
     @songs = @artist.songs
+    session[:return_to] ||= request.referer
   end
 
   def new
@@ -17,6 +18,21 @@ class Artists::SongsController < ApplicationController
       redirect_to song_path(@song)
     else
       render :new
+    end
+  end
+
+  def edit
+    @artist = Artist.find(params[:artist_id])
+    @song = Song.find(params[:id])
+  end
+
+  def update
+    @artist = Artist.find(params[:artist_id])
+    @song = Song.find(params[:id])
+    if @song.update(song_params)
+      redirect_to song_path(@song)
+    else
+      render :edit
     end
   end
 

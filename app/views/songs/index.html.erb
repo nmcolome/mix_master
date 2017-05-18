@@ -1,3 +1,8 @@
 <h1>All Songs</h1>
 
-<%= link_to "New Song", new_artist_song_path(@artist.id) %>
+<%#<%= link_to "New Song", new_artist_song_path(@artist) %>
+<ul id="song_title">
+  <% @songs.order("title").each do |song| %>
+    <li><%= link_to song.title, song_path(song) %></li>
+  <% end %>
+</ul>
