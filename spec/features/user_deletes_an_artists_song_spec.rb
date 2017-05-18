@@ -10,14 +10,14 @@ RSpec.feature "User deletes an artist song" do
     click_on "View Songs"
     click_on "#{song1.title}"
     click_on "Delete"
-    expect(current_path).to eq("/artists/#{artist.id}")
+    expect(current_path).to eq("/artists/#{artist.id}/songs")
     expect(page).to_not have_content song1.title
 
-    # visit "/songs"
-    # click_on "#{song2.title}"
-    # click_on "Delete"
-    # expect(current_path).to eq("/songs")
-    # expect(page).to_not have_content song2.title
+    visit "/songs"
+    click_on "#{song2.title}"
+    click_on "Delete"
+    expect(current_path).to eq("/songs")
+    expect(page).to_not have_content song2.title
   end
 end
 

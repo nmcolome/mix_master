@@ -2,6 +2,7 @@ class SongsController < ApplicationController
 
   def index
     @songs = Song.all
+    session[:return_to] = request.fullpath
   end
 
   def show

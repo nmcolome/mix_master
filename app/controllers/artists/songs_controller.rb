@@ -3,7 +3,8 @@ class Artists::SongsController < ApplicationController
   def index
     @artist = Artist.find(params[:artist_id])
     @songs = @artist.songs
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.fullpath
+    # session[:return_to] ||= request.referer
   end
 
   def new
